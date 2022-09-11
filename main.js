@@ -4,15 +4,9 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 
-menuEmail.addEventListener('click', toggleDesktopMenu);
+menuEmail.addEventListener('click', function(){toggleDesktopMenu(desktopMenu)});
+menuHamIcon.addEventListener('click', function(){toggleDesktopMenu(mobileMenu)});
 
-function toggleDesktopMenu() {
-    desktopMenu.classList.toggle('inactive');
-}
-
-
-menuHamIcon.addEventListener('click', toggleMobileMenu);
-
-function toggleMobileMenu() {
-    mobileMenu.classList.toggle('inactive');
+function toggleDesktopMenu(elemento) {
+    elemento.classList.toggle('inactive');
 }
