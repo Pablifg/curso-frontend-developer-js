@@ -9,33 +9,24 @@ menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarIcon.addEventListener('click', toggleCartAside);
 
+/*Garantizo que estén ocultos y muestro el de mi interés*/
 function toggleDesktopMenu() {
-    const isAsideClosed = aside.classList.contains('inactive');
-
-    if (!isAsideClosed) {
-        aside.classList.add('inactive');
-    }
+    mobileMenu.classList.add('inactive');
+    aside.classList.add('inactive');
 
     desktopMenu.classList.toggle('inactive');
 }
 
 function toggleMobileMenu() {
-    const isAsideClosed = aside.classList.contains('inactive');
-
-    if (!isAsideClosed) {
-        aside.classList.add('inactive');
-    }
+    desktopMenu.classList.add('inactive');
+    aside.classList.add('inactive');
 
     mobileMenu.classList.toggle('inactive');
 }
 
-
 function toggleCartAside() {
-    const isMobileMenuClosed = (mobileMenu.classList.contains('inactive'));
-
-    if (!isMobileMenuClosed){
-        mobileMenu.classList.add('inactive');
-    }
+    mobileMenu.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
 
     aside.classList.toggle('inactive');
 }
