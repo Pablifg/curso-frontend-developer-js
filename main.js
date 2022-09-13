@@ -2,18 +2,22 @@ const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector('.menu');
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarIcon.addEventListener('click', toggleCartAside);
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
 /*Garantizo que estén ocultos y muestro el de mi interés*/
 function toggleDesktopMenu() {
     mobileMenu.classList.add('inactive');
     shoppingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.add('inactive')    
 
     desktopMenu.classList.toggle('inactive');
 }
@@ -21,6 +25,7 @@ function toggleDesktopMenu() {
 function toggleMobileMenu() {
     desktopMenu.classList.add('inactive');
     shoppingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.add('inactive')
 
     mobileMenu.classList.toggle('inactive');
 }
@@ -28,8 +33,21 @@ function toggleMobileMenu() {
 function toggleCartAside() {
     mobileMenu.classList.add('inactive');
     desktopMenu.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 
     shoppingCartContainer.classList.toggle('inactive');
+}
+
+function openProductDetailAside() {
+    mobileMenu.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
+
+    productDetailContainer.classList.remove('inactive')
+}
+
+function closeProductDetailAside() {
+    productDetailContainer.classList.add('inactive')
 }
 
 //Create array for product list
@@ -57,6 +75,8 @@ function renderProducts(arr) {
 
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);//Modificar imgsrc
+
+        productImg.addEventListener('click', openProductDetailAside);
 
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
